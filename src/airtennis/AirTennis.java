@@ -20,11 +20,7 @@ public class AirTennis{
     private int delay = 4;
     
     AirTennis(){
-        
-        // create frame to the menu
         start = true;
-        
-        //------------------------------------//
     }
     
     public static void main(String[] args) {

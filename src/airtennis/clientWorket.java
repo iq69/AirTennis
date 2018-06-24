@@ -194,12 +194,12 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == e.VK_LEFT){
+        if(e.getKeyCode() == e.VK_LEFT && OpenWindow.crt.play == true){
             OpenWindow.crt.moveLeft1();
             sendMessage("left\r");
             //send signal from socket
         }
-        if(e.getKeyCode() == e.VK_RIGHT){
+        if(e.getKeyCode() == e.VK_RIGHT && OpenWindow.crt.play == true){
             OpenWindow.crt.moveRight1();
             sendMessage("right\r");
         }

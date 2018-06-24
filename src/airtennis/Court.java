@@ -19,7 +19,7 @@ import javax.swing.Timer;
  *
  * @author anurag
  */
-public class Court extends JPanel implements ActionListener, KeyListener{
+public class Court extends JPanel implements ActionListener{
         
         public static boolean play;
         final private int crtwidth = 600;final private int crtHeight = 600;
@@ -46,18 +46,29 @@ public class Court extends JPanel implements ActionListener, KeyListener{
             if(play == false){
                 g.setColor(Color.MAGENTA);
                 if(!ServerWorker.isServer){
+                    g.drawString("Player 1", 200, 170);
                     g.drawString("Press Enter to start", 200, 200);
                     g.drawString("Press BackSpace to go to previous Menu", 200, 230);
                 }
                 else{
+                    g.drawString("Player 2", 200, 170);
                     g.drawString("Opponent will start the Game", 200, 200);
                 }
             }
             
             g.setColor(Color.red);
-            g.fillRect(pad1X, pad1Y, padwidth, padheight);// make pad1
-            g.fillRect(pad2X, pad2Y, padwidth, padheight);
-                
+            g.fillRect(pad1X, pad1Y, padwidth, padheight);// client pad
+            g.setColor(Color.white);
+            g.drawString("Player 1", pad1X+padwidth/2, pad1Y+padheight/2);
+            
+            
+            g.setColor(Color.GREEN);
+            g.fillRect(pad2X, pad2Y, padwidth, padheight);// server pad
+            g.setColor(Color.white);
+            g.drawString("Player 2", pad2X+padwidth/2, pad2Y + padheight/2);
+            
+            
+            
             g.setColor(Color.YELLOW);
             g.fillOval(ballX, ballY, 20, 20);
             
@@ -112,45 +123,4 @@ public class Court extends JPanel implements ActionListener, KeyListener{
         }
     }
 
-    @Override
-    public void keyTyped(KeyEvent ke) {
-    
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        
-        
-        if(e.getKeyCode() == e.VK_LEFT){
-            moveLeft1();
-            //send signal from socket
-        }
-        if(e.getKeyCode() == e.VK_RIGHT){
-            moveRight1();
-        }
-        
-        if(e.getKeyCode() == e.VK_UP){
-            moveLeft2();
-        }
-        
-        if(e.getKeyCode() == e.VK_DOWN){
-            moveRight2();
-        }
-        
-        if(e.getKeyCode() == e.VK_ENTER){
-            //play = true;
-            
-        }
-        if(e.getKeyCode() == e.VK_BACK_SPACE){
-            AirTennis.jframe.remove(OpenWindow.crt);
-            AirTennis.jframe.add(AirTennis.openwindow);
-            AirTennis.openwindow.repaint();
-            AirTennis.jframe.setVisible(true);
-        }
-        
-    }
-
-    @Override
-    public void keyReleased(KeyEvent ke) {
-    }
 }

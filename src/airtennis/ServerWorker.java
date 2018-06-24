@@ -68,8 +68,7 @@ class ReceiveThread extends Thread{
         // receive data from the client.
         while(!st.equals("over")){
             if(st.equals("right")){
-                System.out.println("here");
-            
+                
                 OpenWindow.crt.moveRight1();
             }
             if(st.equals("left")){
@@ -221,12 +220,12 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
             //OpenWindow.crt.moveRight1();
         }
         
-        if(e.getKeyCode() == e.VK_UP){
+        if(e.getKeyCode() == e.VK_UP && OpenWindow.crt.play == true){
             OpenWindow.crt.moveLeft2();
             sendMessage("left\r");
         }
         
-        if(e.getKeyCode() == e.VK_DOWN){
+        if(e.getKeyCode() == e.VK_DOWN && OpenWindow.crt.play == true){
             OpenWindow.crt.moveRight2();
             sendMessage("right\r");
         }

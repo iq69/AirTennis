@@ -49,13 +49,6 @@ public class OpenWindow extends JPanel implements ActionListener{
             jframe.remove(AirTennis.openwindow);
             // add the court window
             
-            /*
-            crt = new Court();
-            jframe.add(crt);
-            jframe.setVisible(true);
-            crt.requestFocus(true);
-            crt.addKeyListener(crt);
-            */
             cw = new ConnectionWindow();
             jframe.add(cw);
             jframe.setVisible(true);
