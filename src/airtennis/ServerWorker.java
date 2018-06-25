@@ -86,7 +86,20 @@ class ReceiveThread extends Thread{
                 Logger.getLogger(ReceiveThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println("server thread has ended\n");
+        // System.out.println("server thread has ended\n");
+        try {
+            //client.close();
+            ServerWorker.ss.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ReceiveThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("server is here");
+        AirTennis.jframe.remove(OpenWindow.crt);
+        AirTennis.jframe.add(AirTennis.openwindow);
+        AirTennis.openwindow.repaint();
+        AirTennis.jframe.setVisible(true);
+        
         
     }    
 }
@@ -126,7 +139,7 @@ class SendThread extends Thread {
 public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener{
 
     private Socket client;
-    private ServerSocket ss;
+    public static ServerSocket ss;
     private OutputStreamWriter os1;
     private PrintWriter out;
     static Court crt;
@@ -193,7 +206,7 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
     
     protected void publish(Boolean start){
         //AirTennis.jframe.remove(OpenWindow.cw);
-                OpenWindow.crt = new Court();
+                OpenWindow.crt = new Court(true);
                 AirTennis.jframe.add(OpenWindow.crt);
                 AirTennis.jframe.setVisible(true);
                 OpenWindow.crt.requestFocus(true);
@@ -240,6 +253,15 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
             AirTennis.jframe.add(AirTennis.openwindow);
             AirTennis.openwindow.repaint();
             AirTennis.jframe.setVisible(true);
+        
+            sendMessage("over\r");
+            try {
+                ss.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ServerWorker.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
         }
         
     

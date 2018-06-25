@@ -30,9 +30,11 @@ public class Court extends JPanel implements ActionListener{
         private int dirX = -1;private int dirY = -1;
         final private int delay = 4;
         final private Timer timer;
+        private boolean isServer;
         
         
-        Court(){
+        Court(boolean bt){
+            isServer = bt;
             play = false;
             timer = new Timer(delay, this);
             timer.start();
@@ -45,7 +47,7 @@ public class Court extends JPanel implements ActionListener{
             
             if(play == false){
                 g.setColor(Color.MAGENTA);
-                if(!ServerWorker.isServer){
+                if(!isServer){
                     g.drawString("Player 1", 200, 170);
                     g.drawString("Press Enter to start", 200, 200);
                     g.drawString("Press BackSpace to go to previous Menu", 200, 230);

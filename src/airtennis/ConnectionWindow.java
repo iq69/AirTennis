@@ -37,8 +37,8 @@ public class ConnectionWindow extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         IPTextField = new javax.swing.JTextField();
         ConnectButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         waitButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("Enter Ip Address of computer want to connect");
 
@@ -55,9 +55,6 @@ public class ConnectionWindow extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Waiting to Connect");
-
         waitButton.setText("Wait for Oppoent");
         waitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,27 +62,32 @@ public class ConnectionWindow extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("OR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConnectButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                .addComponent(waitButton)
-                .addGap(69, 69, 69))
+                .addGap(264, 264, 264))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(IPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(IPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(203, 203, 203)
+                        .addComponent(waitButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel3)))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,13 +96,13 @@ public class ConnectionWindow extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(IPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ConnectButton)
-                    .addComponent(waitButton))
-                .addGap(37, 37, 37)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ConnectButton)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(waitButton)
+                .addGap(82, 82, 82))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,7 +148,7 @@ public class ConnectionWindow extends javax.swing.JPanel {
     private javax.swing.JButton ConnectButton;
     private javax.swing.JTextField IPTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton waitButton;
     // End of variables declaration//GEN-END:variables
 

@@ -82,12 +82,22 @@ class ReceiveThreadClient extends Thread{
                 Logger.getLogger(ReceiveThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println("server thread has ended\n");
+        try {
+            //System.out.println("server thread has ended\n");
+            client.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ReceiveThreadClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            AirTennis.jframe.remove(OpenWindow.crt);
+            AirTennis.jframe.add(AirTennis.openwindow);
+            AirTennis.openwindow.repaint();
+            AirTennis.jframe.setVisible(true);
+            
+        
         
     }    
 }
-
-
 
 
 public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyListener { 
@@ -97,6 +107,7 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
     private OutputStreamWriter os;
     private PrintWriter out;
     private String IP;
+    private Socket clientSocket;
     
     @Override
     protected Integer doInBackground() throws Exception {
@@ -121,7 +132,7 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
             
             // connect to ip and port
             InetAddress inetAddress = InetAddress.getByName(IP);
-            Socket clientSocket = new Socket(inetAddress, port);
+            clientSocket = new Socket(inetAddress, port);
             String st;
             
             // receive ack from the server
@@ -174,7 +185,7 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
     
     protected void publish(Boolean start){
         AirTennis.jframe.remove(OpenWindow.cw);
-                OpenWindow.crt = new Court();
+                OpenWindow.crt = new Court(false);
                 AirTennis.jframe.add(OpenWindow.crt);
                 AirTennis.jframe.setVisible(true);
                 OpenWindow.crt.requestFocus(true);
@@ -221,6 +232,16 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
             AirTennis.jframe.add(AirTennis.openwindow);
             AirTennis.openwindow.repaint();
             AirTennis.jframe.setVisible(true);
+            
+            sendMessage("over\r");
+            
+            try {
+                // close the sockets
+                clientSocket.close();
+            } catch (IOException ex) {
+                Logger.getLogger(clientWorket.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         
     }
