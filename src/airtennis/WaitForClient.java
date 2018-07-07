@@ -29,6 +29,8 @@ public class WaitForClient extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(240, 50, 86));
+
         jLabel1.setFont(new java.awt.Font("TeXGyreSchola", 0, 24)); // NOI18N
         jLabel1.setText("Waiting For Opponent. . .");
 

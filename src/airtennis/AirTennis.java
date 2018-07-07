@@ -8,7 +8,7 @@ package airtennis;
 import javax.swing.JFrame;
 
 /**
- * TO DO: change server thread while(over)
+ * 
  * @author anurag
  */
 
@@ -30,6 +30,7 @@ public class AirTennis{
         airTennis.jframe = new JFrame();
         airTennis.jframe.setSize(600, 600);
         airTennis.jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        airTennis.jframe.setResizable(false);
         airTennis.jframe.setVisible(true);
 
         openwindow = new OpenWindow();

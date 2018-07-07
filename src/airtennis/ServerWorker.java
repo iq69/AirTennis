@@ -40,8 +40,8 @@ class ReceiveThread extends Thread{
     // update pad
     // pad2(bottom pad)
     public void run() {
-        System.out.println("thread has started\n");
         
+        // thread started
         BufferedReader bf = null;
         
         try {
@@ -86,7 +86,7 @@ class ReceiveThread extends Thread{
                 Logger.getLogger(ReceiveThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        // System.out.println("server thread has ended\n");
+        
         try {
             //client.close();
             ServerWorker.ss.close();
@@ -94,7 +94,6 @@ class ReceiveThread extends Thread{
             Logger.getLogger(ReceiveThread.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println("server is here");
         AirTennis.jframe.remove(OpenWindow.crt);
         AirTennis.jframe.add(AirTennis.openwindow);
         AirTennis.openwindow.repaint();
@@ -130,8 +129,6 @@ class SendThread extends Thread {
             
             out.write(st);
             out.flush();
-            System.out.println("message is sent\n");
-        
     }
 }
 
@@ -154,16 +151,13 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
         // game started and send key values to the client
         
         boolean start = true;
-        System.out.println("wait button is clicked");
         int port = 9999;
         try {
-            System.out.println("server has started");
-            ss = new ServerSocket(port);
             
-            System.out.println("server is waiting");
+            ss = new ServerSocket(port);
+            // wait for client
             client = ss.accept();
             
-            System.out.println("client is connected");
             os1 = new OutputStreamWriter(client.getOutputStream());
             out = new PrintWriter(os1);
             
@@ -171,26 +165,13 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
             
             //remove the window of waiting add court
             AirTennis.jframe.remove(ConnectionWindow.clientWait);
-            System.out.print("message send");
-            
             if(start)
                 publish(start);
            
             
-            System.out.println("thread has started");
-            //------------thread of client
+            // thread recveive message from player 1
             ReceiveThread rt = new ReceiveThread(client);
             rt.start();
-            //---------------this thread handle client
-            
-            
-            /*
-            // thread for server
-            SendThread sendthread = new SendThread(client);
-            sendthread.start();
-            */
-            
-            //outputstream
             
 
         } catch (IOException ex) {
@@ -212,8 +193,7 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
                 OpenWindow.crt.requestFocus(true);
                 OpenWindow.crt.addKeyListener(this);
                 start = false;
-                System.out.println("court is ready for server");
-            
+                
     }
 
     
@@ -223,16 +203,18 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == e.VK_LEFT){
-            //OpenWindow.crt.moveLeft1();
+        if(e.getKeyCode() == e.VK_LEFT && OpenWindow.crt.play == true){
+            OpenWindow.crt.moveLeft2();
+            sendMessage("left\r");
             System.out.println("server is here\r");
-            //send signal from socket
             
         }
-        if(e.getKeyCode() == e.VK_RIGHT){
-            //OpenWindow.crt.moveRight1();
+        if(e.getKeyCode() == e.VK_RIGHT && OpenWindow.crt.play == true){
+            OpenWindow.crt.moveRight2();
+            sendMessage("right\r");
         }
         
+        /*
         if(e.getKeyCode() == e.VK_UP && OpenWindow.crt.play == true){
             OpenWindow.crt.moveLeft2();
             sendMessage("left\r");
@@ -242,10 +224,8 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
             OpenWindow.crt.moveRight2();
             sendMessage("right\r");
         }
-        
+        */
         if(e.getKeyCode() == e.VK_ENTER){
-            System.out.println("enter key is clicked");
-            //OpenWindow.crt.play = true;
             
         }
         if(e.getKeyCode() == e.VK_BACK_SPACE){
@@ -261,10 +241,8 @@ public class ServerWorker extends SwingWorker<Void, Void> implements KeyListener
                 Logger.getLogger(ServerWorker.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
         }
         
-    
     }
 
     @Override

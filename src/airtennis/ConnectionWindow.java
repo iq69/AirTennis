@@ -40,6 +40,10 @@ public class ConnectionWindow extends javax.swing.JPanel {
         waitButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(240, 50, 86));
+
+        jLabel1.setFont(new java.awt.Font("Noto Sans Mono CJK SC Bold", 0, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(33, 226, 234));
         jLabel1.setText("Enter Ip Address of computer want to connect");
 
         IPTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +59,7 @@ public class ConnectionWindow extends javax.swing.JPanel {
             }
         });
 
-        waitButton.setText("Wait for Oppoent");
+        waitButton.setText("Wait for Opponent");
         waitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 waitButtonActionPerformed(evt);
@@ -82,12 +86,12 @@ public class ConnectionWindow extends javax.swing.JPanel {
                                 .addGap(59, 59, 59)
                                 .addComponent(IPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(waitButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
-                        .addComponent(jLabel3)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(waitButton)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,9 +104,9 @@ public class ConnectionWindow extends javax.swing.JPanel {
                 .addComponent(ConnectButton)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(waitButton)
-                .addGap(82, 82, 82))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

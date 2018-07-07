@@ -37,8 +37,8 @@ class ReceiveThreadClient extends Thread{
     // pad2(bottom pad)
     @Override
     public void run(){
-        System.out.println("thread has started\n");
         
+        // thread started
         BufferedReader bf = null;
         
         try {
@@ -83,7 +83,7 @@ class ReceiveThreadClient extends Thread{
             }
         }
         try {
-            //System.out.println("server thread has ended\n");
+            
             client.close();
         } catch (IOException ex) {
             Logger.getLogger(ReceiveThreadClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,8 +124,6 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
         // connect to the server
         //StringIP = IPTextField.getText();
         boolean start = true;
-        //IP = "localhost";
-        System.out.println(IP);
         int port = 9999;
         
         try {
@@ -137,7 +135,6 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
             
             // receive ack from the server
             bf = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            System.out.println("connected to server");
             st = receiveMessage(clientSocket);
             
             if(st.equals("ack")){
@@ -163,8 +160,6 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
         }catch (IOException ex) {
             Logger.getLogger(ConnectionWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        System.out.println("message is sent\n");
         
         return 2;
     }
@@ -215,6 +210,7 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
             sendMessage("right\r");
         }
         
+        /*
         if(e.getKeyCode() == e.VK_UP){
             //OpenWindow.crt.moveLeft2();
         }
@@ -222,7 +218,7 @@ public class clientWorket extends SwingWorker<Integer, Boolean> implements KeyLi
         if(e.getKeyCode() == e.VK_DOWN){
             //OpenWindow.crt.moveRight2();
         }
-        
+        */
         if(e.getKeyCode() == e.VK_ENTER){
             OpenWindow.crt.play = true;
             sendMessage("enter\r");

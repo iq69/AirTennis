@@ -101,7 +101,6 @@ public class Court extends JPanel implements ActionListener{
     }
 
     public void moveLeft1(){
-        //System.out.println("pad move left");
         if(pad1X - 10 > 0){
             pad1X -= 10;
         }

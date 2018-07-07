@@ -29,6 +29,8 @@ public class ConnectToServerWait extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(240, 50, 86));
+
         jLabel1.setFont(new java.awt.Font("Linux Biolinum O", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Connecting to Opponent. . .");
